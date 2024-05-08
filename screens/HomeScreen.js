@@ -31,6 +31,10 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate("BookDetail", { book });
   };
 
+  const navigateToCart = () => {
+    navigation.navigate("Cart");
+  };
+
   const renderBookItem = ({ item }) => (
     <TouchableOpacity
       style={styles.bookItem}
@@ -48,6 +52,9 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.cartButton} onPress={navigateToCart}>
+        <Text style={styles.cartButtonText}>Cart</Text>
+      </TouchableOpacity>
       <FlatList
         data={books}
         renderItem={renderBookItem}
@@ -61,8 +68,6 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     backgroundColor: "#f0f0f0",
   },
   listContainer: {
@@ -94,6 +99,19 @@ const styles = StyleSheet.create({
   bookAuthor: {
     fontSize: 14,
     color: "#666",
+  },
+  cartButton: {
+    position: "absolute",
+    top: 16,
+    right: 16,
+    zIndex: 1, 
+    padding: 8,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    borderRadius: 8,
+  },
+  cartButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
 
